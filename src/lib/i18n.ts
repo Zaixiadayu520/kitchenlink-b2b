@@ -89,7 +89,13 @@ const dict = {
       needWholesale: "账户审核中，暂不能下单。请联系我们开通。",
     },
     footer: {
-      contact: "联系",
+      contact: "联系我们",
+      phone: "电话",
+      email: "邮箱",
+      wechat: "微信",
+      qq: "QQ",
+      whatsapp: "WhatsApp",
+      hours: "服务时间",
       rights: "© KitchenLink Wholesale. 仅面向合格批发客户。",
     },
     admin: {
@@ -182,7 +188,13 @@ const dict = {
       needWholesale: "Your account is pending approval.",
     },
     footer: {
-      contact: "Contact",
+      contact: "Contact us",
+      phone: "Phone",
+      email: "Email",
+      wechat: "WeChat",
+      qq: "QQ",
+      whatsapp: "WhatsApp",
+      hours: "Hours",
       rights: "© KitchenLink Wholesale. For qualified wholesale buyers only.",
     },
     admin: {

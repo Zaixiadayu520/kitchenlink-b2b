@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { getDict, isLocale, type Locale } from "@/lib/i18n";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 
 export default async function LocaleLayout({
   children,
@@ -20,7 +21,8 @@ export default async function LocaleLayout({
     <>
       <SiteHeader locale={locale} t={t} user={user} />
       <main className="flex-1">{children}</main>
-      <SiteFooter t={t} />
+      <SiteFooter locale={locale} t={t} />
+      <WhatsAppFloat locale={locale} />
     </>
   );
 }
