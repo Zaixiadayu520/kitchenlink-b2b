@@ -3,6 +3,7 @@ import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { formatUsd, getDict, isLocale, type Locale } from "@/lib/i18n";
 import { ApproveButton } from "@/components/ApproveButton";
+import { CatalogManager } from "@/components/admin/CatalogManager";
 
 export default async function AdminPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
@@ -12,7 +13,7 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
   const session = await getSession();
   if (!session || session.role !== "ADMIN") redirect(`/${locale}/login`);
 
-  const [applications, customs, orders, products] = await Promise.all([
+  const [applications, customs, orders, productCount] = await Promise.all([
     prisma.wholesaleApplication.findMany({ orderBy: { createdAt: "desc" }, take: 30 }),
     prisma.customRequest.findMany({ orderBy: { createdAt: "desc" }, take: 30 }),
     prisma.order.findMany({
@@ -27,10 +28,12 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
     <div className="container-page py-10">
       <h1 className="font-[family-name:var(--font-display)] text-3xl">{t.admin.title}</h1>
       <p className="mt-2 text-muted">
-        {t.admin.products}: {products}
+        {t.admin.products}: {productCount} · 登录账号 {session.email}
       </p>
 
-      <section className="mt-10">
+      <CatalogManager />
+
+      <section className="mt-14">
         <h2 className="font-[family-name:var(--font-display)] text-2xl">{t.admin.applications}</h2>
         <div className="mt-4 space-y-3">
           {applications.map((a) => (

@@ -8,6 +8,7 @@ import {
   type Dictionary,
 } from "@/lib/i18n";
 import { AddToCartButton } from "./AddToCartButton";
+import { ProductImage } from "./ProductImage";
 
 type ProductCardProps = {
   locale: Locale;
@@ -23,6 +24,7 @@ type ProductCardProps = {
     wholesalePrice: number;
     moq: number;
     imageEmoji: string;
+    imageUrl?: string | null;
     category?: { nameZh: string; nameEn: string } | null;
   };
 };
@@ -31,8 +33,13 @@ export function ProductCard({ locale, t, product }: ProductCardProps) {
   return (
     <article className="card flex h-full flex-col p-4">
       <Link href={`/${locale}/product/${product.slug}`} className="flex flex-1 flex-col">
-        <div className="mb-3 flex h-28 items-center justify-center rounded-xl bg-paper-2 text-5xl">
-          {product.imageEmoji}
+        <div className="mb-3">
+          <ProductImage
+            imageUrl={product.imageUrl}
+            imageEmoji={product.imageEmoji}
+            alt={productName(product, locale)}
+            className="h-36 w-full object-cover"
+          />
         </div>
         {product.category && (
           <div className="text-xs font-semibold uppercase tracking-wide text-accent-2">

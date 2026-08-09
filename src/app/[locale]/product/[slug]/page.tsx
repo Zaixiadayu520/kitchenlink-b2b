@@ -11,6 +11,7 @@ import {
   type Locale,
 } from "@/lib/i18n";
 import { AddToCartButton } from "@/components/AddToCartButton";
+import { ProductImage } from "@/components/ProductImage";
 import Link from "next/link";
 
 export default async function ProductPage({
@@ -35,8 +36,14 @@ export default async function ProductPage({
         ← {t.nav.catalog}
       </Link>
       <div className="mt-6 grid gap-8 md:grid-cols-2">
-        <div className="card flex min-h-72 items-center justify-center text-8xl">
-          {product.imageEmoji}
+        <div className="card overflow-hidden p-2">
+          <ProductImage
+            imageUrl={product.imageUrl}
+            imageEmoji={product.imageEmoji}
+            alt={productName(product, locale)}
+            className="min-h-72 w-full object-cover"
+            emojiClassName="text-8xl"
+          />
         </div>
         <div>
           <p className="text-sm font-semibold uppercase tracking-wide text-accent-2">

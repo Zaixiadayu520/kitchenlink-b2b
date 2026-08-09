@@ -71,6 +71,7 @@ model Product {
   wholesalePrice Float // USD per unit
   moq           Int      @default(1) // minimum order qty
   imageEmoji    String   @default("📦")
+  imageUrl      String?  // https URL or uploaded data URL
   featured      Boolean  @default(false)
   active        Boolean  @default(true)
   categoryId    String
