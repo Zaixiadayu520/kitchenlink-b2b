@@ -1,0 +1,136 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  WHOLESALE
+  PENDING
+}
+
+enum RequestStatus {
+  NEW
+  REVIEWING
+  QUOTED
+  ACCEPTED
+  CLOSED
+}
+
+enum OrderStatus {
+  DRAFT
+  SUBMITTED
+  CONFIRMED
+  SHIPPED
+  CANCELLED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  phone        String?
+  companyName  String?
+  businessType String? // restaurant | supermarket | distributor
+  role         Role     @default(PENDING)
+  locale       String   @default("zh")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  orders          Order[]
+  customRequests  CustomRequest[]
+  applications    WholesaleApplication[]
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  slug      String    @unique
+  nameEn    String
+  nameZh    String
+  sortOrder Int       @default(0)
+  products  Product[]
+}
+
+model Product {
+  id            String   @id @default(cuid())
+  sku           String   @unique
+  slug          String   @unique
+  nameEn        String
+  nameZh        String
+  descriptionEn String
+  descriptionZh String
+  unitEn        String // case / bag / carton
+  unitZh        String
+  packSize      String // e.g. 6x1gal, 50lb
+  wholesalePrice Float // USD per unit
+  moq           Int      @default(1) // minimum order qty
+  imageEmoji    String   @default("📦")
+  featured      Boolean  @default(false)
+  active        Boolean  @default(true)
+  categoryId    String
+  category      Category @relation(fields: [categoryId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  orderItems OrderItem[]
+}
+
+model WholesaleApplication {
+  id           String   @id @default(cuid())
+  userId       String?
+  user         User?    @relation(fields: [userId], references: [id])
+  contactName  String
+  email        String
+  phone        String
+  companyName  String
+  businessType String
+  cityState    String
+  monthlyVolume String?
+  message      String?
+  status       RequestStatus @default(NEW)
+  createdAt    DateTime @default(now())
+}
+
+model CustomRequest {
+  id           String   @id @default(cuid())
+  userId       String?
+  user         User?    @relation(fields: [userId], references: [id])
+  contactName  String
+  email        String
+  phone        String
+  companyName  String
+  productNeed  String
+  quantity     String
+  targetPrice  String?
+  deadline     String?
+  notes        String?
+  status       RequestStatus @default(NEW)
+  createdAt    DateTime @default(now())
+}
+
+model Order {
+  id          String      @id @default(cuid())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  status      OrderStatus @default(SUBMITTED)
+  note        String?
+  totalAmount Float       @default(0)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  items       OrderItem[]
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  unitPrice Float
+}
