@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #102033;
-  --ink-soft: #243447;
-  --paper: #f4efe6;
-  --paper-2: #ebe3d6;
-  --line: #d9cfc0;
-  --accent: #b84a2b;
-  --accent-2: #0f6b5c;
-  --highlight: #f0d9a8;
-  --white: #fffdf9;
-  --muted: #5c6670;
+  --ink: #0c1520;
+  --ink-soft: #1c2a3a;
+  --paper: #f7f4ef;
+  --paper-2: #ebe6de;
+  --line: #d5cfc4;
+  --accent: #9e2b1e;
+  --accent-2: #1a5c4f;
+  --gold: #c4a46a;
+  --highlight: #e8d7b0;
+  --white: #fffcf7;
+  --muted: #66707a;
 }
 
 @theme inline {
@@ -21,6 +22,7 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
+  --color-gold: var(--gold);
   --color-highlight: var(--highlight);
   --color-white: var(--white);
   --color-muted: var(--muted);
@@ -38,9 +40,7 @@ html {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(1200px 500px at 10% -10%, #f7e7c8 0%, transparent 55%),
-    linear-gradient(180deg, var(--paper) 0%, #efe8dc 100%);
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body), "Noto Sans SC", system-ui, sans-serif;
 }
@@ -51,11 +51,11 @@ a {
 }
 
 ::selection {
-  background: #f0c9a8;
+  background: color-mix(in srgb, var(--gold) 55%, white);
 }
 
 .container-page {
-  width: min(1120px, calc(100% - 2rem));
+  width: min(1180px, calc(100% - 2rem));
   margin-inline: auto;
 }
 
@@ -63,11 +63,12 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   border-radius: 999px;
-  padding: 0.75rem 1.25rem;
+  padding: 0.85rem 1.45rem;
   font-weight: 600;
-  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  letter-spacing: 0.01em;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn:hover {
@@ -77,15 +78,17 @@ a {
 .btn-primary {
   background: var(--accent);
   color: white;
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--accent) 28%, transparent);
 }
 
 .btn-primary:hover {
-  background: #9a3c22;
+  background: #851f15;
 }
 
 .btn-secondary {
-  background: var(--ink);
-  color: white;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid color-mix(in srgb, var(--white) 30%, transparent);
 }
 
 .btn-ghost {
@@ -95,10 +98,10 @@ a {
 }
 
 .card {
-  background: color-mix(in srgb, var(--white) 88%, transparent);
-  border: 1px solid var(--line);
-  border-radius: 1.1rem;
-  backdrop-filter: blur(6px);
+  background: var(--white);
+  border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 4%, transparent);
 }
 
 .input {
@@ -113,7 +116,7 @@ a {
 
 .input:focus {
   border-color: var(--accent-2);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-2) 20%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-2) 18%, transparent);
 }
 
 .label {
@@ -122,4 +125,43 @@ a {
   font-weight: 600;
   margin-bottom: 0.35rem;
   color: var(--ink-soft);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-pan {
+  from {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.12) translate3d(-1.5%, 1%, 0);
+  }
+}
+
+.anim-rise {
+  animation: rise-in 0.7s ease both;
+}
+
+.anim-rise-delay {
+  animation: rise-in 0.8s ease 0.12s both;
+}
+
+.hero-pan {
+  animation: soft-pan 18s ease-in-out infinite alternate;
+}
+
+.section-title {
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }

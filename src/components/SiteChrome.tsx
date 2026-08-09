@@ -16,49 +16,63 @@ export function SiteHeader({
 }) {
   const base = `/${locale}`;
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-[color-mix(in_srgb,var(--paper)_86%,transparent)] backdrop-blur-md">
-      <div className="container-page flex items-center justify-between gap-4 py-3">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-[color-mix(in_srgb,var(--ink)_78%,transparent)] text-white backdrop-blur-xl">
+      <div className="container-page flex items-center justify-between gap-4 py-3.5">
         <Link href={base} className="min-w-0">
-          <div className="font-[family-name:var(--font-display)] text-xl tracking-tight text-ink md:text-2xl">
+          <div className="font-[family-name:var(--font-display)] text-xl tracking-tight md:text-2xl">
             {t.brand}
           </div>
-          <div className="truncate text-xs text-muted">{t.tagline}</div>
+          <div className="truncate text-[11px] tracking-wide text-white/55">{t.tagline}</div>
         </Link>
-        <nav className="hidden items-center gap-5 text-sm font-medium text-ink-soft lg:flex">
-          <Link href={`${base}/catalog`}>{t.nav.catalog}</Link>
-          <Link href={`${base}/custom`}>{t.nav.custom}</Link>
-          <Link href={`${base}/apply`}>{t.nav.apply}</Link>
-          <Link href={`${base}/about`}>{t.nav.about}</Link>
+        <nav className="hidden items-center gap-6 text-sm font-medium text-white/75 lg:flex">
+          <Link className="hover:text-white" href={`${base}/catalog`}>
+            {t.nav.catalog}
+          </Link>
+          <Link className="hover:text-white" href={`${base}/custom`}>
+            {t.nav.custom}
+          </Link>
+          <Link className="hover:text-white" href={`${base}/apply`}>
+            {t.nav.apply}
+          </Link>
+          <Link className="hover:text-white" href={`${base}/about`}>
+            {t.nav.about}
+          </Link>
         </nav>
         <div className="flex items-center gap-2 sm:gap-3">
           <LocaleSwitch locale={locale} />
-          <Link href={`${base}/cart`} className="btn btn-ghost !px-3 !py-2 text-sm">
+          <Link
+            href={`${base}/cart`}
+            className="rounded-full border border-white/20 px-3 py-2 text-sm text-white/90 hover:bg-white/10"
+          >
             <CartBadge label={t.nav.cart} />
           </Link>
           {user ? (
             <>
               {user.role === "ADMIN" && (
-                <Link href={`${base}/admin`} className="hidden text-sm font-semibold sm:inline">
+                <Link href={`${base}/admin`} className="hidden text-sm font-semibold text-gold sm:inline">
                   {t.nav.admin}
                 </Link>
               )}
-              <Link href={`${base}/account`} className="hidden text-sm sm:inline">
+              <Link href={`${base}/account`} className="hidden text-sm text-white/80 sm:inline">
                 {user.name}
               </Link>
               <form action={`/api/auth/logout?locale=${locale}`} method="post">
-                <button className="text-sm text-muted" type="submit">
+                <button className="text-sm text-white/55" type="submit">
                   {t.nav.logout}
                 </button>
               </form>
             </>
           ) : (
-            <Link href={`${base}/login`} className="btn btn-secondary !px-3 !py-2 text-sm">
+            <Link
+              href={`${base}/login`}
+              className="rounded-full bg-white px-3 py-2 text-sm font-semibold text-ink"
+            >
               {t.nav.login}
             </Link>
           )}
         </div>
       </div>
-      <div className="container-page flex gap-4 overflow-x-auto pb-3 text-sm font-medium text-ink-soft lg:hidden">
+      <div className="container-page flex gap-4 overflow-x-auto pb-3 text-sm font-medium text-white/70 lg:hidden">
         <Link href={`${base}/catalog`}>{t.nav.catalog}</Link>
         <Link href={`${base}/custom`}>{t.nav.custom}</Link>
         <Link href={`${base}/apply`}>{t.nav.apply}</Link>
