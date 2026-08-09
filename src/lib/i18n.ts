@@ -10,10 +10,10 @@ export function isLocale(v: string): v is Locale {
 const dict = {
   zh: {
     brand: "厨联 KitchenLink",
-    tagline: "美国中餐与商超 · 日常快消批发",
+    tagline: "中国供应商 · 全美中餐厅日常耗材批发",
     nav: {
       catalog: "批发目录",
-      custom: "定制批发",
+      custom: "定制需求",
       apply: "申请开户",
       about: "关于我们",
       cart: "采购单",
@@ -23,18 +23,18 @@ const dict = {
       logout: "退出",
     },
     hero: {
-      title: "专供美国中餐厅与华人商超的批发供应链",
+      title: "餐巾纸、热敏纸、菜单灯箱、打包盒、餐具——一站式供应全美中餐厅",
       subtitle:
-        "酱料干货、米面油脂、冷冻蛋白、打包耗材——按箱批发，支持定制采购与稳定补货。",
-      ctaCatalog: "浏览批发目录",
+        "中国源头供应商，服务美国中餐厅与华人商超。常规耗材箱规批发，菜单/灯箱/包装支持定制。",
+      ctaCatalog: "浏览耗材目录",
       ctaCustom: "提交定制需求",
-      ctaApply: "申请批发账户",
+      ctaApply: "申请批发开户",
     },
     trust: {
-      t1: "面向餐厅/商超 B2B",
-      t2: "箱规起订 · 清晰报价",
-      t3: "定制采购跟进",
-      t4: "中英双语服务",
+      t1: "中国源头 · 出口美国",
+      t2: "餐厅高频耗材齐全",
+      t3: "菜单灯箱可定制",
+      t4: "中英双语对接",
     },
     categories: "热门品类",
     featured: "主推商品",
@@ -53,7 +53,7 @@ const dict = {
     applyHint: "审核通过后解锁采购单与账户价。请填写真实餐厅/商超信息。",
     aboutTitle: "关于厨联",
     aboutBody:
-      "厨联 KitchenLink 服务在美国经营中餐厅、外卖店与华人商超的客户，提供日常快消品批发供货，并承接客户的定制采购需求。我们关注箱规、起订量与稳定补货，而不是零售体验。",
+      "厨联 KitchenLink 是面向全美中餐厅的中国供应商，主营餐巾纸、热敏纸、菜单印刷、灯箱菜谱、打包盒、餐具与厨房用品，并承接客户的定制化需求。我们关注箱规、起订量与稳定补货。",
     form: {
       name: "联系人",
       email: "邮箱",
@@ -109,7 +109,7 @@ const dict = {
   },
   en: {
     brand: "KitchenLink",
-    tagline: "Wholesale FMCG for Chinese restaurants & markets in the U.S.",
+    tagline: "China supplier · Consumables for U.S. Chinese restaurants",
     nav: {
       catalog: "Catalog",
       custom: "Custom Order",
@@ -122,17 +122,17 @@ const dict = {
       logout: "Log out",
     },
     hero: {
-      title: "B2B supply for Chinese restaurants & Asian markets",
+      title: "Napkins, thermal paper, menus, lightboxes, packaging & utensils — for Chinese restaurants nationwide",
       subtitle:
-        "Sauces, rice, oils, frozen proteins, packaging — case wholesale, custom sourcing, reliable replenishment.",
-      ctaCatalog: "Browse catalog",
+        "Source from China, supply U.S. Chinese restaurants and markets. Case wholesale plus custom print & signage.",
+      ctaCatalog: "Browse consumables",
       ctaCustom: "Request custom quote",
       ctaApply: "Apply for wholesale",
     },
     trust: {
-      t1: "Restaurant & market B2B",
-      t2: "Case MOQs · clear USD pricing",
-      t3: "Custom sourcing follow-up",
+      t1: "China-origin supply",
+      t2: "Restaurant daily consumables",
+      t3: "Custom menus & lightboxes",
       t4: "Chinese & English support",
     },
     categories: "Categories",
@@ -152,7 +152,7 @@ const dict = {
     applyHint: "Approved accounts unlock order sheets. Please use your real restaurant or market details.",
     aboutTitle: "About KitchenLink",
     aboutBody:
-      "KitchenLink supplies Chinese restaurants, takeout kitchens, and Asian markets across the U.S. with everyday FMCG wholesale — plus custom sourcing when you need something special. We optimize for case packs, MOQs, and replenishment, not retail browsing.",
+      "KitchenLink is a China-based supplier for Chinese restaurants across the U.S. — napkins, thermal paper, menu printing, lightboxes, takeout packaging, utensils, kitchen supplies, and custom jobs. We optimize for case packs, MOQs, and replenishment.",
     form: {
       name: "Contact name",
       email: "Email",
