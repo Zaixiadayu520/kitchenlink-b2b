@@ -4,6 +4,7 @@ import type { SessionUser } from "@/lib/auth";
 import { siteContact, whatsappUrl } from "@/lib/contact";
 import { LocaleSwitch } from "./LocaleSwitch";
 import { CartBadge } from "./CartBadge";
+import { PaymentMethods } from "./PaymentMethods";
 
 export function SiteHeader({
   locale,
@@ -90,7 +91,7 @@ export function SiteFooter({ locale, t }: { locale: Locale; t: Dictionary }) {
 
   return (
     <footer className="mt-auto border-t border-line bg-ink text-paper">
-      <div className="container-page grid gap-6 py-10 md:grid-cols-[1.2fr_1fr]">
+      <div className="container-page grid gap-8 py-10 lg:grid-cols-[1.1fr_0.9fr_1fr]">
         <div>
           <div className="font-[family-name:var(--font-display)] text-2xl">{t.brand}</div>
           <p className="mt-2 max-w-md text-sm text-paper/75">{t.tagline}</p>
@@ -113,6 +114,7 @@ export function SiteFooter({ locale, t }: { locale: Locale; t: Dictionary }) {
               {t.footer.email}
             </a>
           </div>
+          <p className="mt-6 text-xs text-paper/55">{t.footer.rights}</p>
         </div>
         <div className="text-sm text-paper/80">
           <div className="font-semibold text-paper">{t.footer.contact}</div>
@@ -142,7 +144,9 @@ export function SiteFooter({ locale, t }: { locale: Locale; t: Dictionary }) {
               {locale === "zh" ? siteContact.hoursZh : siteContact.hoursEn}
             </li>
           </ul>
-          <p className="mt-4 text-xs text-paper/55">{t.footer.rights}</p>
+        </div>
+        <div>
+          <PaymentMethods locale={locale} t={t} />
         </div>
       </div>
     </footer>

@@ -87,6 +87,15 @@ const dict = {
       submit: "提交采购单",
       needLogin: "请先登录已开通的批发账户。",
       needWholesale: "账户审核中，暂不能下单。请联系我们开通。",
+      submitted: "采购单已提交。请用微信或支付宝付款，并备注订单号。",
+      orderId: "订单号",
+    },
+    payment: {
+      title: "付款方式",
+      wechat: "微信支付",
+      alipay: "支付宝",
+      wechatId: "微信号",
+      tip: "扫码付款时请备注餐厅名或订单号，便于我们对账。",
     },
     footer: {
       contact: "联系我们",
@@ -186,6 +195,15 @@ const dict = {
       submit: "Submit order sheet",
       needLogin: "Please log in with an approved wholesale account.",
       needWholesale: "Your account is pending approval.",
+      submitted: "Order submitted. Please pay via WeChat or Alipay and note the order ID.",
+      orderId: "Order ID",
+    },
+    payment: {
+      title: "Payment",
+      wechat: "WeChat Pay",
+      alipay: "Alipay",
+      wechatId: "WeChat ID",
+      tip: "Please note your restaurant name or order ID when paying so we can match payment.",
     },
     footer: {
       contact: "Contact us",

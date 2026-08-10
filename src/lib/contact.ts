@@ -8,6 +8,9 @@ export const siteContact = {
   whatsappE164: "8613755207375",
   hoursZh: "周一至周六 9:00–18:00（中国时间可约）",
   hoursEn: "Mon–Sat 9:00–18:00 (China time / by appointment)",
+  /** 微信 / 支付宝收款码（支票暂不启用） */
+  wechatPayQr: "/images/payment/wechat-pay.png",
+  alipayQr: "/images/payment/alipay.png",
 };
 
 export function whatsappUrl(text?: string) {

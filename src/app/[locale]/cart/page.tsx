@@ -2,9 +2,9 @@
 
 import { use, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useCart } from "@/lib/cart";
 import { formatUsd, getDict, type Locale } from "@/lib/i18n";
+import { PaymentMethodsLight } from "@/components/PaymentMethods";
 
 export default function CartPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = use(params);
@@ -13,8 +13,8 @@ export default function CartPage({ params }: { params: Promise<{ locale: string 
   const { lines, setQty, remove, total, clear } = useCart();
   const [note, setNote] = useState("");
   const [msg, setMsg] = useState("");
+  const [orderId, setOrderId] = useState("");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   async function submit() {
     setLoading(true);
@@ -34,8 +34,24 @@ export default function CartPage({ params }: { params: Promise<{ locale: string 
       return;
     }
     clear();
-    setMsg(t.form.success);
-    router.refresh();
+    setOrderId(data.orderId || "");
+    setMsg(t.cart.submitted);
+  }
+
+  if (orderId) {
+    return (
+      <div className="container-page py-10">
+        <h1 className="font-[family-name:var(--font-display)] text-3xl">{t.cart.title}</h1>
+        <p className="mt-4 text-accent-2">{msg}</p>
+        <p className="mt-2 text-sm text-muted">
+          {t.cart.orderId}：<span className="font-mono font-semibold text-ink">{orderId}</span>
+        </p>
+        <PaymentMethodsLight locale={locale} t={t} orderId={orderId} />
+        <Link href={`/${locale}/catalog`} className="btn btn-primary mt-6 inline-flex">
+          {t.nav.catalog}
+        </Link>
+      </div>
+    );
   }
 
   if (lines.length === 0) {
@@ -46,7 +62,6 @@ export default function CartPage({ params }: { params: Promise<{ locale: string 
         <Link href={`/${locale}/catalog`} className="btn btn-primary mt-6 inline-flex">
           {t.nav.catalog}
         </Link>
-        {msg && <p className="mt-4 text-accent-2">{msg}</p>}
       </div>
     );
   }
@@ -94,6 +109,7 @@ export default function CartPage({ params }: { params: Promise<{ locale: string 
           </button>
           {msg && <p className="mt-3 text-sm text-accent-2">{msg}</p>}
           <p className="mt-3 text-xs text-muted">{t.cart.needLogin}</p>
+          <p className="mt-2 text-xs text-muted">{t.payment.tip}</p>
         </div>
       </div>
     </div>
