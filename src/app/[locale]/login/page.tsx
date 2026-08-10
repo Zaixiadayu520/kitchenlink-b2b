@@ -39,7 +39,7 @@ export default function LoginPage({ params }: { params: Promise<{ locale: string
   return (
     <div className="container-page py-10">
       <div className="mx-auto max-w-md">
-        <h1 className="font-[family-name:var(--font-display)] text-3xl">{t.nav.login}</h1>
+        <h1 className="section-title">{t.nav.login}</h1>
         <form onSubmit={onSubmit} className="card mt-6 grid gap-4 p-6">
           <div>
             <label className="label">{t.form.email}</label>

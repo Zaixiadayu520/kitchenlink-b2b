@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
-import { Fraunces, Source_Sans_3, Noto_Sans_SC } from "next/font/google";
+import { Inter, Noto_Sans_SC } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
 import "./globals.css";
 
-const display = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-display",
-});
-
-const body = Source_Sans_3({
+/** DESIGN.md: Airbnb Cereal VF unavailable → Inter is the specified open-source substitute */
+const body = Inter({
   subsets: ["latin"],
   variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
 });
 
 const noto = Noto_Sans_SC({
@@ -30,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh" className={`${display.variable} ${body.variable} ${noto.variable} h-full`}>
+    <html lang="zh" className={`${body.variable} ${noto.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
         <CartProvider>{children}</CartProvider>
       </body>

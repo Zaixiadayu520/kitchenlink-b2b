@@ -26,7 +26,7 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
 
   return (
     <div className="container-page py-10">
-      <h1 className="font-[family-name:var(--font-display)] text-3xl">{t.admin.title}</h1>
+      <h1 className="section-title">{t.admin.title}</h1>
       <p className="mt-2 text-muted">
         {t.admin.products}: {productCount} · 登录账号 {session.email}
       </p>
@@ -34,7 +34,7 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
       <CatalogManager />
 
       <section className="mt-14">
-        <h2 className="font-[family-name:var(--font-display)] text-2xl">{t.admin.applications}</h2>
+        <h2 className="display-md">{t.admin.applications}</h2>
         <div className="mt-4 space-y-3">
           {applications.map((a) => (
             <div key={a.id} className="card p-4">
@@ -58,7 +58,7 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
       </section>
 
       <section className="mt-10">
-        <h2 className="font-[family-name:var(--font-display)] text-2xl">{t.admin.customs}</h2>
+        <h2 className="display-md">{t.admin.customs}</h2>
         <div className="mt-4 space-y-3">
           {customs.map((c) => (
             <div key={c.id} className="card p-4">
@@ -78,7 +78,7 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
       </section>
 
       <section className="mt-10">
-        <h2 className="font-[family-name:var(--font-display)] text-2xl">{t.admin.orders}</h2>
+        <h2 className="display-md">{t.admin.orders}</h2>
         <div className="mt-4 space-y-3">
           {orders.map((o) => (
             <div key={o.id} className="card p-4">

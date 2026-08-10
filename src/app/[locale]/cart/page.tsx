@@ -41,7 +41,7 @@ export default function CartPage({ params }: { params: Promise<{ locale: string 
   if (orderId) {
     return (
       <div className="container-page py-10">
-        <h1 className="font-[family-name:var(--font-display)] text-3xl">{t.cart.title}</h1>
+        <h1 className="section-title">{t.cart.title}</h1>
         <p className="mt-4 text-accent-2">{msg}</p>
         <p className="mt-2 text-sm text-muted">
           {t.cart.orderId}：<span className="font-mono font-semibold text-ink">{orderId}</span>
@@ -57,7 +57,7 @@ export default function CartPage({ params }: { params: Promise<{ locale: string 
   if (lines.length === 0) {
     return (
       <div className="container-page py-10">
-        <h1 className="font-[family-name:var(--font-display)] text-3xl">{t.cart.title}</h1>
+        <h1 className="section-title">{t.cart.title}</h1>
         <p className="mt-4 text-muted">{t.cart.empty}</p>
         <Link href={`/${locale}/catalog`} className="btn btn-primary mt-6 inline-flex">
           {t.nav.catalog}
@@ -68,7 +68,7 @@ export default function CartPage({ params }: { params: Promise<{ locale: string 
 
   return (
     <div className="container-page py-10">
-      <h1 className="font-[family-name:var(--font-display)] text-3xl">{t.cart.title}</h1>
+      <h1 className="section-title">{t.cart.title}</h1>
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_0.8fr]">
         <div className="space-y-3">
           {lines.map((l) => (

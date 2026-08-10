@@ -203,7 +203,7 @@ export function CatalogManager() {
   return (
     <section className="mt-10">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="font-[family-name:var(--font-display)] text-2xl">品类与商品管理</h2>
+        <h2 className="display-md">品类与商品管理</h2>
         <div className="flex gap-2">
           <button
             type="button"

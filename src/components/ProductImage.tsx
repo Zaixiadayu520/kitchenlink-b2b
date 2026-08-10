@@ -4,6 +4,7 @@ type Props = {
   alt: string;
   className?: string;
   emojiClassName?: string;
+  rounded?: boolean;
 };
 
 export function ProductImage({
@@ -12,15 +13,17 @@ export function ProductImage({
   alt,
   className = "h-28 w-full object-cover",
   emojiClassName = "text-5xl",
+  rounded = true,
 }: Props) {
+  const round = rounded ? "rounded-[14px]" : "rounded-none";
   if (imageUrl) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={imageUrl} alt={alt} className={`rounded-xl bg-paper-2 ${className}`} />
+      <img src={imageUrl} alt={alt} className={`${round} bg-surface-soft ${className}`} />
     );
   }
   return (
-    <div className={`flex items-center justify-center rounded-xl bg-paper-2 ${className} ${emojiClassName}`}>
+    <div className={`flex items-center justify-center bg-surface-soft ${round} ${className} ${emojiClassName}`}>
       {imageEmoji}
     </div>
   );

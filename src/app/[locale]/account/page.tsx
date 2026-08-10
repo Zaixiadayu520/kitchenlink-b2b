@@ -21,7 +21,7 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
 
   return (
     <div className="container-page py-10">
-      <h1 className="font-[family-name:var(--font-display)] text-3xl">{t.nav.account}</h1>
+      <h1 className="section-title">{t.nav.account}</h1>
       <div className="card mt-6 p-5">
         <p className="font-semibold">{session.name}</p>
         <p className="text-sm text-muted">{session.email}</p>
@@ -38,7 +38,7 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
         )}
       </div>
 
-      <h2 className="mt-10 font-[family-name:var(--font-display)] text-2xl">{t.admin.orders}</h2>
+      <h2 className="mt-10 display-md">{t.admin.orders}</h2>
       <div className="mt-4 space-y-3">
         {orders.length === 0 && <p className="text-muted">{t.cart.empty}</p>}
         {orders.map((o) => (

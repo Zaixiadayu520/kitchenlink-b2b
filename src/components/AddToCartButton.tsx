@@ -28,7 +28,7 @@ export function AddToCartButton({ locale, product, label }: Props) {
   return (
     <button
       type="button"
-      className="btn btn-primary w-full text-sm"
+      className="btn btn-primary w-full !min-h-11 !py-2.5 !text-sm"
       onClick={() => {
         add({
           productId: product.id,

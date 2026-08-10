@@ -29,15 +29,17 @@ export default async function CatalogPage({
   });
 
   return (
-    <div className="container-page py-10">
-      <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl">{t.catalogTitle}</h1>
-      <p className="mt-2 max-w-2xl text-muted">{t.catalogHint}</p>
+    <div className="container-page py-10 md:py-14">
+      <h1 className="section-title">{t.catalogTitle}</h1>
+      <p className="mt-2 max-w-2xl text-[14px] text-muted">{t.catalogHint}</p>
 
-      <div className="mt-6 flex flex-wrap gap-2">
+      <div className="mt-6 flex flex-wrap gap-2 border-b border-hairline pb-4">
         <Link
           href={`/${locale}/catalog`}
-          className={`rounded-full px-3 py-1.5 text-sm font-semibold ${
-            !categorySlug ? "bg-ink text-white" : "border border-line bg-white text-ink-soft"
+          className={`border-b-2 px-1 pb-3 text-[14px] font-medium ${
+            !categorySlug
+              ? "border-ink text-ink"
+              : "border-transparent text-muted hover:text-ink"
           }`}
         >
           {t.allCategories}
@@ -46,8 +48,10 @@ export default async function CatalogPage({
           <Link
             key={c.id}
             href={`/${locale}/catalog?category=${c.slug}`}
-            className={`rounded-full px-3 py-1.5 text-sm font-semibold ${
-              categorySlug === c.slug ? "bg-ink text-white" : "border border-line bg-white text-ink-soft"
+            className={`border-b-2 px-1 pb-3 text-[14px] font-medium ${
+              categorySlug === c.slug
+                ? "border-ink text-ink"
+                : "border-transparent text-muted hover:text-ink"
             }`}
           >
             {categoryName(c, locale)}
@@ -55,7 +59,7 @@ export default async function CatalogPage({
         ))}
       </div>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
         {products.map((p) => (
           <ProductCard key={p.id} locale={locale} t={t} product={p} />
         ))}
