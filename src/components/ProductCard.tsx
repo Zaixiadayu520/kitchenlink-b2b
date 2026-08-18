@@ -31,37 +31,37 @@ type ProductCardProps = {
 
 export function ProductCard({ locale, t, product }: ProductCardProps) {
   return (
-    <article className="group flex h-full flex-col">
+    <article className="card group flex h-full flex-col overflow-hidden p-0">
       <Link href={`/${locale}/product/${product.slug}`} className="flex flex-1 flex-col">
-        <div className="relative aspect-square overflow-hidden rounded-[14px] bg-surface-strong">
+        <div className="relative aspect-[4/3] overflow-hidden bg-surface-strong">
           <ProductImage
             imageUrl={product.imageUrl}
             imageEmoji={product.imageEmoji}
             alt={productName(product, locale)}
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
             emojiClassName="text-5xl"
             rounded={false}
           />
           {product.category && (
-            <span className="badge-pill absolute top-3 left-3">
+            <span className="badge-pill absolute top-2.5 left-2.5">
               {categoryName(product.category, locale)}
             </span>
           )}
         </div>
-        <div className="mt-3 flex flex-1 flex-col gap-1 px-0.5">
+        <div className="flex flex-1 flex-col gap-1 p-4">
           <h3 className="title-md line-clamp-2 text-ink">{productName(product, locale)}</h3>
           <p className="body-sm">
             {t.pack}: {product.packSize} · {t.moq} {product.moq} {unitName(product, locale)}
           </p>
-          <p className="mt-1 text-[14px] font-semibold text-ink">
+          <p className="mt-auto pt-2 text-[18px] font-bold text-primary">
             {formatUsd(product.wholesalePrice)}
-            <span className="ml-1 font-normal text-muted">
+            <span className="ml-1 text-[13px] font-normal text-muted">
               / {unitName(product, locale)}
             </span>
           </p>
         </div>
       </Link>
-      <div className="mt-3">
+      <div className="border-t border-hairline px-4 py-3">
         <AddToCartButton locale={locale} product={product} label={t.addToCart} />
       </div>
     </article>

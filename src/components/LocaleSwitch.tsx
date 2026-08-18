@@ -11,7 +11,7 @@ export function LocaleSwitch({ locale }: { locale: Locale }) {
   return (
     <Link
       href={`/${other}${rest}`}
-      className="rounded-full border border-hairline px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-ink hover:bg-surface-soft"
+      className="rounded-md border border-white/20 px-2.5 py-1 text-[12px] font-semibold uppercase text-white/80 hover:bg-white/10"
     >
       {other === "zh" ? "中文" : "EN"}
     </Link>

@@ -28,7 +28,7 @@ export function AddToCartButton({ locale, product, label }: Props) {
   return (
     <button
       type="button"
-      className="btn btn-primary w-full !min-h-11 !py-2.5 !text-sm"
+      className="btn btn-primary w-full !min-h-10 !py-2 !text-[13px]"
       onClick={() => {
         add({
           productId: product.id,
@@ -45,7 +45,7 @@ export function AddToCartButton({ locale, product, label }: Props) {
         setTimeout(() => setOk(false), 1200);
       }}
     >
-      {ok ? (locale === "zh" ? "已加入" : "Added") : `${label} · ${formatUsd(product.wholesalePrice)}`}
+      {ok ? (locale === "zh" ? "✓ 已加入" : "✓ Added") : `${label} · ${formatUsd(product.wholesalePrice)}`}
     </button>
   );
 }
