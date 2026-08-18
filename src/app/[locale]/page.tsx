@@ -185,27 +185,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* ═══ CONTACT STRIP ═══ */}
-      <section className="border-t border-hairline bg-primary-light py-10">
-        <div className="container-page grid gap-6 text-center sm:grid-cols-3">
-          <div>
-            <p className="text-[13px] font-bold uppercase tracking-wider text-primary">
-              {locale === "zh" ? "微信" : "WeChat"}
-            </p>
-            <p className="mt-1 text-[16px] font-semibold text-ink">{siteContact.wechat}</p>
-          </div>
-          <div>
-            <p className="text-[13px] font-bold uppercase tracking-wider text-primary">WhatsApp</p>
-            <p className="mt-1 text-[16px] font-semibold text-ink">{siteContact.phoneDisplay}</p>
-          </div>
-          <div>
-            <p className="text-[13px] font-bold uppercase tracking-wider text-primary">
-              {locale === "zh" ? "邮箱" : "Email"}
-            </p>
-            <p className="mt-1 text-[16px] font-semibold text-ink">{siteContact.email}</p>
-          </div>
-        </div>
-      </section>
+      {/* 联系信息横条已移除 */}
     </div>
   );
 }
