@@ -190,7 +190,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="container-page grid gap-6 text-center sm:grid-cols-3">
           <div>
             <p className="text-[13px] font-bold uppercase tracking-wider text-primary">
-              {locale === "zh" ? "微信 / WeChat" : "WeChat"}
+              {locale === "zh" ? "微信" : "WeChat"}
             </p>
             <p className="mt-1 text-[16px] font-semibold text-ink">{siteContact.wechat}</p>
           </div>
@@ -200,7 +200,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
           <div>
             <p className="text-[13px] font-bold uppercase tracking-wider text-primary">
-              {locale === "zh" ? "邮箱 / Email" : "Email"}
+              {locale === "zh" ? "邮箱" : "Email"}
             </p>
             <p className="mt-1 text-[16px] font-semibold text-ink">{siteContact.email}</p>
           </div>
